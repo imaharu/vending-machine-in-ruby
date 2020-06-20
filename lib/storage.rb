@@ -5,7 +5,7 @@ class Storage
   attr_reader :juices
 
   def initialize
-    @juices = [default_juices]
+    @juices = default_juices
   end
 
   def store_juice(juice)
@@ -31,6 +31,6 @@ class Storage
   end
 
   def default_juices
-    Juice.new('コーラ', 120, 5)
+    [Juice.new('コーラ', 120, 5)]
   end
 end
