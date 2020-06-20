@@ -45,4 +45,12 @@ class SuicaTest < Minitest::Test
       machine.sell('コーラ', @suica)
     end
   end
+  
+  def test_step_4_get_user_age
+    assert_equal 23, @suica.user.age
+  end
+
+  def test_step_4_get_user_sex
+    assert_equal '男性', @suica.user.sex
+  end
 end
