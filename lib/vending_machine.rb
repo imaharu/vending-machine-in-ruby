@@ -18,12 +18,12 @@ class VendingMachine
     payment_method
   end
 
-  def storaged_juices_name
-    storaged_juices.map(&:name)
-  end
-
   def storaged_juices
     @storage.juices
+  end
+
+  def available_sell_juices_list
+    @storage.all_exist_stock
   end
 
   private

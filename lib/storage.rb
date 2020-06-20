@@ -17,6 +17,10 @@ class Storage
     @juices.select { |juice| juice.name == name }[0].stock -= 1
   end
 
+  def all_exist_stock
+    @juices.select { |juice| exist_stock?(juice.stock) }
+  end
+
   def validate_stock(stock)
     raise '売れ切れています' unless exist_stock? stock
   end
