@@ -30,7 +30,7 @@ class VendingMachine
   end
 
   def sellable_juices
-    @storage.exist_stocks
+    @storage.stock_exist_juices
   end
 
   private

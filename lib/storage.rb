@@ -16,7 +16,7 @@ class Storage
     @juices.select { |juice| juice.name == name }[0].stock -= 1
   end
 
-  def exist_stocks
+  def stock_exist_juices
     @juices.select { |juice| stock_exist?(juice.stock) }
   end
 
