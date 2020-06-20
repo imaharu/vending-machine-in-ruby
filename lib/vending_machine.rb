@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class VendingMachine
-  attr_reader :revenue
-  attr_reader :purchased_history
+  attr_reader :revenue, :purchased_history
   def initialize(storage)
     @storage = storage
     @revenue = 0

@@ -2,8 +2,7 @@
 
 class Suica
   MINUMUM_CHARED_MONEY = 100
-  attr_reader :user
-  attr_reader :charged_money_amount
+  attr_reader :user, :charged_money_amount
   def initialize(user)
     @charged_money_amount = 0
     @user = user
