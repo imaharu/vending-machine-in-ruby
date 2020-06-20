@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Storage
-  Juices = Struct.new(:name, :price, :stock)
+  Juice = Struct.new(:name, :price, :stock)
   attr_reader :juices
 
   def initialize
@@ -9,7 +9,7 @@ class Storage
   end
 
   def store(name, price, stock)
-    juice = Juices.new(name.to_s, price.to_i, stock.to_i)
+    juice = Juice.new(name.to_s, price.to_i, stock.to_i)
     @juices.push juice
   end
 

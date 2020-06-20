@@ -9,12 +9,12 @@ class VendingMachine
   end
 
   def sell(juice_name, payment_method)
-    item = storaged_juices.select { |juice| juice.name == juice_name }[0]
-    validate_sell item, payment_method
-    payment_method.pay item.price
-    @storage.reduce_stock item.name
-    @revenue += item.price
-    record_purchased_history(payment_method.user, item)
+    juice = storaged_juices.select { |juice| juice.name == juice_name }[0]
+    validate_sell juice, payment_method
+    payment_method.pay juice.price
+    @storage.reduce_stock juice.name
+    @revenue += juice.price
+    record_purchased_history(payment_method.user, juice)
     payment_method
   end
 
@@ -28,12 +28,12 @@ class VendingMachine
 
   private
 
-  def record_purchased_history(user, item)
-    @purchased_history.push({ item: item.name, sex: user.sex, age: user.age, purchased_at: Time.now })
+  def record_purchased_history(user, juice)
+    @purchased_history.push({ item: juice.name, sex: user.sex, age: user.age, purchased_at: Time.now })
   end
 
-  def validate_sell(item, payment_method)
-    @storage.validate_stock item.stock
-    payment_method.validate_pay item.price
+  def validate_sell(juice, payment_method)
+    @storage.validate_stock juice.stock
+    payment_method.validate_pay juice.price
   end
 end
