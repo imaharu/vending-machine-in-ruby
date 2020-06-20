@@ -14,7 +14,7 @@ class VendingMachine
     validate_sell juice, payment_method
 
     payment_method.pay juice.price
-    @storage.reduce_stock juice.name
+    @storage.reduce_stock juice
     @revenue += juice.price
     record_purchased_history(payment_method.user, juice)
 
