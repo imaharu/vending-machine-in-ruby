@@ -8,6 +8,11 @@ class Storage
     @juices = [default_juices]
   end
 
+  def store(name, price, stock)
+    juice = Juices.new(name.to_s, price.to_i, stock.to_i)
+    @juices.push juice
+  end
+
   def reduce_stock(name)
     @juices.select { |juice| juice.name == name }[0].stock -= 1
   end
