@@ -9,13 +9,13 @@ class VendingMachine
   end
 
   def sell(juice_name, payment_method)
-    juice = @storage.select_juice_by_name(juice_name)
+    juice = @storage.select_juice_by_name juice_name
     validate_sell juice, payment_method
 
     payment_method.pay juice.price
     @storage.reduce_stock juice
     @revenue += juice.price
-    record_purchased_history(payment_method.user, juice)
+    record_purchased_history payment_method.user, juice
 
     payment_method
   end

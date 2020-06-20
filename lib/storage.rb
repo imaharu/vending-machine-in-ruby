@@ -21,7 +21,7 @@ class Storage
   end
 
   def stock_exist_juices
-    @juices.select { |j| stock_exist?(j.stock) }
+    @juices.select { |j| stock_exist? j.stock }
   end
 
   def validate_stock(juice)
