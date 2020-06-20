@@ -29,7 +29,7 @@ class VendingMachine
   private
 
   def record_purchased_history(user, item)
-    @purchased_history.push({ item: item.name,sex: user.sex, age: user.age, purchased_at: Time.now })
+    @purchased_history.push({ item: item.name, sex: user.sex, age: user.age, purchased_at: Time.now })
   end
 
   def validate_sell(item, payment_method)
