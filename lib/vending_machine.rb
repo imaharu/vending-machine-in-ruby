@@ -5,6 +5,7 @@ class VendingMachine
   def initialize(storage)
     @storage = storage
     @revenue = 0
+    @purchased_history = []
   end
 
   def sell(juice_name, payment_method)
@@ -13,6 +14,7 @@ class VendingMachine
     payment_method.pay item.price
     @storage.reduce_stock item.name
     @revenue += item.price
+    record_purchased_history(payment_method.user, item)
     payment_method
   end
 
@@ -25,6 +27,10 @@ class VendingMachine
   end
 
   private
+
+  def record_purchased_history(user, item)
+    @purchased_history.push({ item: item.name,sex: user.sex, age: user.age, purchased_at: Time.now })
+  end
 
   def validate_sell(item, payment_method)
     @storage.validate_stock item.stock
