@@ -4,10 +4,12 @@ require 'minitest/autorun'
 require './lib/suica'
 require './lib/vending_machine'
 require './lib/storage'
+require './lib/user'
 
 class SuicaTest < Minitest::Test
   def setup
-    @suica = Suica.new
+    user = User.new(23, '男性')
+    @suica = Suica.new(user)
   end
 
   def test_step_0_success_charged

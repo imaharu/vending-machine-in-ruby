@@ -8,8 +8,7 @@ class Storage
     @juices = [default_juices]
   end
 
-  def store(name, price, stock)
-    juice = Juice.new(name.to_s, price.to_i, stock.to_i)
+  def store_juice(juice)
     @juices.push juice
   end
 
@@ -32,6 +31,6 @@ class Storage
   end
 
   def default_juices
-    Juices.new('コーラ', 120, 5)
+    Juice.new('コーラ', 120, 5)
   end
 end

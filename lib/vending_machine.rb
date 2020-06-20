@@ -9,13 +9,17 @@ class VendingMachine
   end
 
   def sell(juice_name, payment_method)
-    juice = storaged_juices.select { |juice| juice.name == juice_name }[0]
+    juice = storaged_juices.select { |j| j.name == juice_name }[0]
     validate_sell juice, payment_method
     payment_method.pay juice.price
     @storage.reduce_stock juice.name
     @revenue += juice.price
     record_purchased_history(payment_method.user, juice)
     payment_method
+  end
+
+  def store_to_storage(juice)
+    @storage.store_juice juice
   end
 
   def storaged_juices
