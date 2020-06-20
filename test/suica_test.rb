@@ -14,7 +14,7 @@ class SuicaTest < Minitest::Test
 
   def test_step_0_success_charged
     @suica.charge(100)
-    assert_equal 100, @suica.retrive_charged
+    assert_equal 100, @suica.charged_money_amount
   end
 
   def test_step_0_failed_when_charge_99
@@ -34,7 +34,7 @@ class SuicaTest < Minitest::Test
     machine = VendingMachine.new(storage)
     @suica.charge 120
     machine.sell('コーラ', @suica)
-    assert_equal 0, @suica.retrive_charged
+    assert_equal 0, @suica.charged_money_amount
   end
 
   def test_step_2_cannot_pay
