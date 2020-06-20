@@ -29,6 +29,6 @@ class Suica
   end
 
   def validate_charge(money)
-    raise StandardError "1回あたりチャージ額は、#{MINUMUM_CHARED_MONEY}円以上です。" if money < MINUMUM_CHARED_MONEY
+    raise "1回あたりチャージ額は、#{MINUMUM_CHARED_MONEY}円以上です。" if money < MINUMUM_CHARED_MONEY
   end
 end
