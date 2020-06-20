@@ -8,7 +8,7 @@ class Storage
     @juices = default_juices
   end
 
-  def select_juice(name)
+  def select_juice_by_name(name)
     @juices.select { |j| j.name == name }[0]
   end
 
