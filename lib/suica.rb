@@ -2,8 +2,9 @@
 
 class Suica
   MINUMUM_CHARED_MONEY = 100
-  def initialize
+  def initialize(user)
     @charged_money_amount = 0
+    @user = user
   end
 
   def pay(money)
