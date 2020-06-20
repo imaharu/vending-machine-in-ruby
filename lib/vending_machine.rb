@@ -29,7 +29,7 @@ class VendingMachine
     @storage.juices
   end
 
-  def available_sell_juices_list
+  def sellable_juices
     @storage.all_exist_stock
   end
 

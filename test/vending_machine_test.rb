@@ -49,11 +49,11 @@ class VendingMachineTest < Minitest::Test
     assert_equal 1, machine.storaged_juices.select { |juice| juice.name == 'レッドブル' }.count
   end
 
-  def test_step_3_available_sell_juices_list
+  def test_step_3_sellable_juices
     storage = Storage.new
     machine = VendingMachine.new(storage)
     machine.store_to_storage(Storage::Juice.new('レッドブル', 200, 0))
     machine.store_to_storage(Storage::Juice.new('水', 100, 5))
-    assert_equal 2, machine.available_sell_juices_list.count
+    assert_equal 2, machine.sellable_juices.count
   end
 end
