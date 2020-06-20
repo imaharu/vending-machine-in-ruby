@@ -40,7 +40,7 @@ class VendingMachine
   end
 
   def validate_sell(juice, payment_method)
-    @storage.validate_stock juice.stock
+    @storage.validate_stock juice
     payment_method.validate_pay juice.price
   end
 end

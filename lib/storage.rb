@@ -20,8 +20,8 @@ class Storage
     @juices.select { |juice| stock_exist?(juice.stock) }
   end
 
-  def validate_stock(stock)
-    raise '売れ切れています' unless stock_exist? stock
+  def validate_stock(juice)
+    raise '売れ切れています' unless stock_exist? juice.stock
   end
 
   private
