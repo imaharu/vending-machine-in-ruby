@@ -8,38 +8,38 @@ class VendingMachine
     @purchased_history = []
   end
 
-  def sell(juice_name, payment_method)
-    juice = @storage.select_juice_by_name juice_name
-    validate_sell juice, payment_method
+  def sell(drink_name, payment_method)
+    drink = @storage.select_drink_by_name drink_name
+    validate_sell drink, payment_method
 
-    payment_method.pay juice.price
-    @storage.reduce_stock juice
-    @revenue += juice.price
-    record_purchased_history payment_method.user, juice
+    payment_method.pay drink.price
+    @storage.reduce_stock drink
+    @revenue += drink.price
+    record_purchased_history payment_method.user, drink
 
     payment_method
   end
 
-  def store_to_storage(juice)
-    @storage.store_juice juice
+  def store_to_storage(drink)
+    @storage.store_drink drink
   end
 
-  def storaged_juices
-    @storage.juices
+  def storaged_drinks
+    @storage.drinks
   end
 
-  def sellable_juices
-    @storage.stock_exist_juices
+  def sellable_drinks
+    @storage.stock_exist_drinks
   end
 
   private
 
-  def record_purchased_history(user, juice)
-    @purchased_history.push({ item: juice.name, sex: user.sex, age: user.age, purchased_at: Time.now })
+  def record_purchased_history(user, drink)
+    @purchased_history.push({ item: drink.name, sex: user.sex, age: user.age, purchased_at: Time.now })
   end
 
-  def validate_sell(juice, payment_method)
-    @storage.validate_stock juice
-    payment_method.validate_pay juice.price
+  def validate_sell(drink, payment_method)
+    @storage.validate_stock drink
+    payment_method.validate_pay drink.price
   end
 end

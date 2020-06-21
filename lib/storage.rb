@@ -1,31 +1,31 @@
 # frozen_string_literal: true
 
 class Storage
-  Juice = Struct.new(:name, :price, :stock)
-  attr_reader :juices
+  Drink = Struct.new(:name, :price, :stock)
+  attr_reader :drinks
 
   def initialize
-    @juices = default_juices
+    @drinks = default_drinks
   end
 
-  def select_juice_by_name(name)
-    @juices.select { |j| j.name == name }[0]
+  def select_drink_by_name(name)
+    @drinks.select { |j| j.name == name }.first
   end
 
-  def store_juice(juice)
-    @juices.push juice
+  def store_drink(drink)
+    @drinks.push drink
   end
 
-  def reduce_stock(juice)
-    @juices.select { |j| j.name == juice.name }[0].stock -= 1
+  def reduce_stock(drink)
+    @drinks.select { |j| j.name == drink.name }.first.stock -= 1
   end
 
-  def stock_exist_juices
-    @juices.select { |j| stock_exist? j.stock }
+  def stock_exist_drinks
+    @drinks.select { |j| stock_exist? j.stock }
   end
 
-  def validate_stock(juice)
-    raise '売れ切れています' unless stock_exist? juice.stock
+  def validate_stock(drink)
+    raise '売れ切れています' unless stock_exist? drink.stock
   end
 
   private
@@ -34,7 +34,7 @@ class Storage
     stock >= 1
   end
 
-  def default_juices
-    [Juice.new('コーラ', 120, 5)]
+  def default_drinks
+    [Drink.new('コーラ', 120, 5)]
   end
 end
