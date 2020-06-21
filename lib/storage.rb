@@ -5,7 +5,7 @@ class Storage
   attr_reader :drinks
 
   def initialize
-    @drinks = default_drinks
+    @drinks = [Drink.new('コーラ', 120, 5)]
   end
 
   def select_drink_by_name(name)
@@ -32,9 +32,5 @@ class Storage
 
   def stock_exist?(stock)
     stock >= 1
-  end
-
-  def default_drinks
-    [Drink.new('コーラ', 120, 5)]
   end
 end
